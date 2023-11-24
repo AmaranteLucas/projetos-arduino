@@ -26,19 +26,19 @@
 LiquidCrystal lcd(8,9,10,11,12,13);
 
 //################## Controle Remoto ###########################
-int RECV_PIN = 7;
+#define RECV_PIN = 7;
 
 IRrecv irrecv(RECV_PIN);
 
 decode_results results;
 
-int flash=6;
+#define flash=6;
 
 //#############################################################
 
 //#################### Sensor de Temperatura ##################
 
-int lm35=A0;
+#define lm35=A0;
 
 float temperatura;
 
@@ -46,7 +46,7 @@ float temperatura;
 
 //#################### Sensor de Luminosidade ##################
 
-int ldr=A1;
+#define ldr=A1;
 
 float luminosidade;
 
@@ -54,10 +54,10 @@ float luminosidade;
 
 //######################## Dispositivos #########################
 
-int disp_1=2;
-int disp_2=3;
-int disp_3=4;
-int disp_4=5;
+#define disp_1=2;
+#define disp_2=3;
+#define disp_3=4;
+#define disp_4=5;
 
 int act=0; // Variável que controla qual dispositivo foi selecionado
 // no menu.
@@ -93,11 +93,11 @@ char cel[8] = {
 
 void setup(){
   
-  irrecv.enableIRIn(); // Start the receiver
+  irrecv.enableIRIn(); // Inicia o receptor IR
   
-  lcd.begin(16,2);
+  lcd.begin(16,2); //Inicia o display 16x2
   
-  lcd.clear();
+  lcd.clear(); //Limpa o display
   lcd.setCursor(4,0);
   lcd.print("Arduino");
   lcd.setCursor(2,1);
@@ -108,7 +108,7 @@ void setup(){
   }
   
   lcd.createChar(1,(uint8_t*)tmp); //Cria icone da teperatura
-  lcd.createChar(2,(uint8_t*)cel);  // cria icone do Graus
+  lcd.createChar(2,(uint8_t*)cel);  //Cria icone do Graus
   
 }
 
@@ -281,7 +281,7 @@ void flash_ir(){ //Função para piscar o led
 
 void escreve_temp(){ //Função para escrever no LCD a temperatura
   
-  temperatura=analogRead(lm35)*0.488758553;
+  temperatura = analogRead(lm35)*0.488758553;
   
   lcd.clear();
   
@@ -307,7 +307,7 @@ void escreve_temp(){ //Função para escrever no LCD a temperatura
   
 }
 
-void escreve_disp(String c){//função que escreve na coluna 2 lina 0
+void escreve_disp(String c){//função que escreve na coluna 2 linha 0
   
   lcd.clear();
   lcd.setCursor(2,0);
