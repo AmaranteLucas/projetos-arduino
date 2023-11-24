@@ -141,22 +141,22 @@ void loop(){
           
           case 1:
             escreve_disp("Dispositivo 1");
-            escreve_estado("Ligado",disp_1,1);
+            escreve_estado(disp_1,1);
           break;
           
           case 2:
             escreve_disp("Dispositivo 2");
-            escreve_estado("Ligado",disp_2,1);
+            escreve_estado(disp_2,1);
           break;
           
           case 3:
             escreve_disp("Dispositivo 3");
-            escreve_estado("Ligado",disp_3,1);
+            escreve_estado(disp_3,1);
           break;
           
           case 4:
             escreve_disp("Dispositivo 4");
-            escreve_estado("Ligado",disp_4,1);
+            escreve_estado(disp_4,1);
           break;
         }
       break;
@@ -166,19 +166,19 @@ void loop(){
 
         switch(act){     
           case 1:
-          escreve_estado("Desligado",disp_1,0);          
+          escreve_estado(disp_1,0);          
           break;
           
           case 2:          
-          escreve_estado("Desligado",disp_2,0);        
+          escreve_estado(disp_2,0);        
           break;
           
           case 3:          
-          escreve_estado("Desligado",disp_3,0);          
+          escreve_estado(disp_3,0);          
           break;
           
           case 4:          
-          escreve_estado("Desligado",disp_4,0);          
+          escreve_estado(disp_4,0);          
           break;          
         }
       break;
@@ -238,9 +238,14 @@ void escreve_disp(String c){//função que escreve na coluna 2 linha 0
 //Função para Escrever no LCD o status de um dos dispositivos
 //Parametros: Status,o número do pino dispositivo a ser controlado,
 // O nível lógicodo pino 1 ligado ou 0 desligado.
-void escreve_estado(String c,int disp,int state){   
+void escreve_estado(int disp, bool state){
   lcd.setCursor(3,1);
-  lcd.print(c);
+  if(state == true){
+    lcd.print("Ligado");
+  }
+  else{
+    lcd.print("Desligado");
+  }
   digitalWrite(disp,state);  
 }
 
